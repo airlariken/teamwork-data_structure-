@@ -1,0 +1,14 @@
+//
+//  main.cpp
+//  teamwork(data_structure)
+//
+//  Created by 陈梓玮 on 2020/12/21.
+//
+
+#include <iostream>
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    return 0;
+}
