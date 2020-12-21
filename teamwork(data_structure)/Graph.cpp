@@ -4,6 +4,10 @@ void Graph::Initiate()
 {
     Vertex_table = new Vertex[Vertex_num];
     edge_table = new Edge*[Edge_num]();
+    for (int i = 0; i < hash_table_num; ++i) {
+        hashCollision[i] = 0;
+    }
+
     
 }
 
@@ -54,7 +58,9 @@ void Graph::addEdge(const int &n, const int &m)
     n_edge1->partner = n_edge2;     n_edge2->partner = n_edge1;//伙伴指针
     //插入hash表
     int pos = hash1(n, m);
-    
+
+
+    hashCollision[pos]++;
     if(edge_table[pos] == nullptr || edge_table[pos]->my_vertex == -1)//空的
         edge_table[pos] = n_edge1;
     else
@@ -88,17 +94,40 @@ int Graph::weight(const int &n, const int &m)//没写完
         return -1;
 }
 
+void Graph::readFile()
+{
+    ifstream fin("usa.txt");
+    if(!fin.is_open())
+        exit(1);
+    string s;
+    getline(fin,s);
+    int a,b;
+    for (int i = 0; i < 87575; ++i) {
+        fin>>a;//把序号扔掉
+        fin>>a>>b;
+        addVertex(a, b);
+    }
+//查边
+    for (int i = 0; i < 121961; ++i) {
+        fin>>a>>b;
+        addEdge(a, b);
+    }
+}
 
 void Graph::printf()
 {
-    for (int i = 0 ; i < Vertex_count; ++i) {
-        Edge *cur = Vertex_table[i].link->next;
-        while (cur != NULL) {
-            cout<<cur->my_vertex<<"<->"<<cur->next_vertex<<'\t';
-            cur = cur->next;
-        }
-        cout<<endl;
+//    for (int i = 0 ; i < Vertex_count; ++i) {
+//        Edge *cur = Vertex_table[i].link->next;
+//        while (cur != NULL) {
+//            cout<<cur->my_vertex<<"<->"<<cur->next_vertex<<'\t';
+//            cur = cur->next;
+//        }
+//        cout<<endl;
+//    }
+    ofstream fout("hash result.txt",ios::trunc);
+    for (int i = 0 ; i <999553; ++i) {
+        fout<<hashCollision[i]<<endl;
     }
-    
+  
 
 }

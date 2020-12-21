@@ -10,8 +10,9 @@
 #define Graph_h
 #include "Header.h"
 
-#define Vertex_num 88000
-#define Edge_num 13000
+#define Vertex_num 87575
+#define Edge_num 121961
+#define hash_table_num 999553
 struct Edge {
     int my_vertex = -1;
     int next_vertex = -1;
@@ -41,6 +42,7 @@ class Graph {
 public:
     Vertex *Vertex_table = nullptr;
     Edge **edge_table = nullptr;
+    Edge **edge_table2 = nullptr;
     int Vertex_count = 0;
     int Edge_count = 0;
     
@@ -63,9 +65,12 @@ public:
 //    bool isEdge(const int &n, const int &m)
     int weight(const int &n, const int &m);
     
+    void readFile();
     
     
+    //调试区域
     void printf();
+    int hashCollision[hash_table_num];
 
 };
 
