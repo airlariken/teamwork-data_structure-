@@ -13,6 +13,7 @@
 #define Vertex_num 87575
 #define Edge_num 121961
 #define hash_table_num 999553
+#define hash_table2_num 999553
 struct Edge {
     int my_vertex = -1;
     int next_vertex = -1;
@@ -40,16 +41,19 @@ struct Vertex
 class Graph {
 //private:
 public:
+    //hashtable
     Vertex *Vertex_table = nullptr;
     Edge **edge_table = nullptr;
     Edge **edge_table2 = nullptr;
+    //按文件读取顺序存边的指针
+    Edge **m_edge = nullptr;
     int Vertex_count = 0;
     int Edge_count = 0;
     
-    
+    int dsu_pre[Edge_num];
 public:
-    Graph(){Initiate();}
-    ~Graph(){delete []edge_table;   delete []Vertex_table;}
+    Graph(){Initiate();m_edge = new Edge*[Edge_num];}
+    ~Graph(){delete []edge_table;   delete []Vertex_table; delete [] m_edge;}
     void Initiate();//初始化
     int vertexCount();
     int edgeCount();
@@ -65,12 +69,21 @@ public:
 //    bool isEdge(const int &n, const int &m)
     int weight(const int &n, const int &m);
     
+    
+    //算法部分
+    void Kruskal();
+    void Dijkstra();
+    int DSU_Find(const int &x);
+    void DSU_Join(const int &x,const int &y);
+    
     void readFile();
     
     
     //调试区域
     void printf();
-    int hashCollision[hash_table_num];
+    bool hashCollision[hash_table_num];
+    int hashCollision2[hash_table2_num];
+    
 
 };
 

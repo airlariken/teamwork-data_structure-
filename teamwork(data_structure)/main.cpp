@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
     Graph m_graph;
     m_graph.readFile();
 
-    
-    m_graph.printf();
+    m_graph.Kruskal();
+//    m_graph.printf();
     return 0;
 }

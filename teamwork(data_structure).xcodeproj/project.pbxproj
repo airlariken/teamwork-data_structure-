@@ -35,6 +35,7 @@
 		586697F42590B49600C51847 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		586697F52590B49600C51847 /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hash.cpp; sourceTree = "<group>"; };
 		586697FD2590B66200C51847 /* MinSpanTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinSpanTree.h; sourceTree = "<group>"; };
+		58669804259200E500C51847 /* MultiHeap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiHeap.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 			children = (
 				586697FD2590B66200C51847 /* MinSpanTree.h */,
 				586697F02590B45300C51847 /* Graph.h */,
+				58669804259200E500C51847 /* MultiHeap.h */,
 				586697EF2590B3FB00C51847 /* Header.h */,
 			);
 			path = include;
